@@ -33,6 +33,10 @@ public class SimilarCodeFragmentService {
         similarCodeFragmentMapper.save(similarCodeFragment);
     }
 
+    public void saveAll(List<SimilarCodeFragment> fragmentList) {
+        similarCodeFragmentMapper.saveAll(fragmentList);
+    }
+
     public void update(SimilarCodeFragment similarCodeFragment) {
         similarCodeFragmentMapper.update(similarCodeFragment);
     }

@@ -43,6 +43,16 @@
         #{similarity}, #{fragment1}, #{fragment2})
     </insert>
 
+    <insert id="saveAll" useGeneratedKeys="true" keyProperty="id">
+        <foreach collection="fragmentList" item="fragment" index="index">
+            INSERT INTO similar_code_fragment (file1_id, file2_id, similarity, fragment1_start_line,
+            fragment1_end_line, fragment2_start_line, fragment2_end_line)
+            VALUES (#{fragment.file1Id}, #{fragment.file2Id}, #{fragment.similarity},
+            #{fragment.fragment1StartLine}, #{fragment.fragment1EndLine},
+            #{fragment.fragment2StartLine}, #{fragment.fragment2EndLine})
+        </foreach>
+    </insert>
+
     <update id="update" parameterType="com.example.codesimilarity.model.SimilarCodeFragment">
         UPDATE similar_code_fragment SET file_id_1 = #{fileId1}, file_id_2 = #{fileId2},
         start_line_1 = #{startLine1}, end_line_1 = #{endLine1}, start_line_2 = #{startLine2},

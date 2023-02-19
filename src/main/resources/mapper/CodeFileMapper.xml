@@ -27,6 +27,10 @@
         WHERE id = #{id}
     </update>
 
+    <select id="listAll" resultMap="BaseResultMap">
+        SELECT * FROM code_file
+    </select>
+
     <delete id="delete" parameterType="java.lang.Integer">
         DELETE FROM code_file WHERE id = #{id}
     </delete>

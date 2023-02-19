@@ -29,6 +29,10 @@ public class CodeFileService {
         codeFileMapper.save(codeFile);
     }
 
+    public List<CodeFile> listAll() {
+        return codeFileMapper.listAll();
+    }
+
     public void update(CodeFile codeFile) {
         codeFileMapper.update(codeFile);
     }

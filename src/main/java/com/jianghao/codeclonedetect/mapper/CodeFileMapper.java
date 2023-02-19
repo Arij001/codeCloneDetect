@@ -15,6 +15,7 @@ import java.util.List;
 public interface CodeFileMapper {
     CodeFile getById(Integer id);
     List<CodeFile> listByProject(Integer projectId);
+    List<CodeFile> listAll();
     void save(CodeFile codeFile);
     void update(CodeFile codeFile);
     void delete(Integer id);

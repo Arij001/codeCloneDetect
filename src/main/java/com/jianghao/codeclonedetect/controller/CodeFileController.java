@@ -1,16 +1,17 @@
 package com.jianghao.codeclonedetect.controller;
 
 import com.jianghao.codeclonedetect.model.CodeFile;
+import com.jianghao.codeclonedetect.model.Project;
 import com.jianghao.codeclonedetect.model.SimilarCodeFragment;
 import com.jianghao.codeclonedetect.service.CodeFileService;
 import com.jianghao.codeclonedetect.service.SimilarCodeFragmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -18,6 +19,7 @@ import java.util.List;
  * @author: jianghao
  * @date: 2023-02-19 21:59
  **/
+
 @Controller
 @RequestMapping("/codeFile")
 public class CodeFileController {
@@ -56,4 +58,6 @@ public class CodeFileController {
         return "codeFile/compare";
     }
 }
+
+
 

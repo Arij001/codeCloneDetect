@@ -15,6 +15,7 @@ public interface SimilarCodeFragmentMapper {
     SimilarCodeFragment getById(Integer id);
     List<SimilarCodeFragment> listByFile(Integer fileId);
     List<SimilarCodeFragment> listByFiles(Integer fileId1, Integer fileId2);
+    void saveAll(List<SimilarCodeFragment> fragmentList);
     void save(SimilarCodeFragment similarCodeFragment);
     void update(SimilarCodeFragment similarCodeFragment);
     void delete(Integer id);

@@ -1,0 +1,57 @@
+<mapper namespace="com.example.codesimilarity.mapper.SimilarCodeFragmentMapper">
+    <resultMap id="similarCodeFragmentMap" type="com.example.codesimilarity.model.SimilarCodeFragment">
+        <id property="id" column="id"/>
+        <result property="fileId1" column="file_id_1"/>
+        <result property="fileId2" column="file_id_2"/>
+        <result property="startLine1" column="start_line_1"/>
+        <result property="endLine1" column="end_line_1"/>
+        <result property="startLine2" column="start_line_2"/>
+        <result property="endLine2" column="end_line_2"/>
+        <result property="similarity" column="similarity"/>
+        <result property="fragment1" column="fragment_1"/>
+        <result property="fragment2" column="fragment_2"/>
+    </resultMap>
+
+    <select id="getById" resultMap="similarCodeFragmentMap" parameterType="java.lang.Integer">
+        SELECT * FROM similar_code_fragment WHERE id = #{id}
+    </select>
+
+    <select id="listByFile" resultMap="similarCodeFragmentMap" parameterType="java.lang.Integer">
+        SELECT * FROM similar_code_fragment WHERE file_id_1 = #{fileId} OR file_id_2 = #{fileId}
+    </select>
+
+    <select id="listByFiles" resultType="SimilarCodeFragment">
+        SELECT
+        scf.id,
+        scf.file_id_1,
+        scf.file_id_2,
+        scf.start_line_1,
+        scf.end_line_1,
+        scf.start_line_2,
+        scf.end_line_2
+        FROM
+        similar_code_fragment scf
+        WHERE
+        scf.file_id_1 = #{fileId1} AND scf.file_id_2 = #{fileId2}
+        OR scf.file_id_1 = #{fileId2} AND scf.file_id_2 = #{fileId1}
+    </select>
+
+    <insert id="save" parameterType="com.example.codesimilarity.model.SimilarCodeFragment">
+        INSERT INTO similar_code_fragment(file_id_1, file_id_2, start_line_1, end_line_1, start_line_2,
+        end_line_2, similarity, fragment_1, fragment_2)
+        VALUES(#{fileId1}, #{fileId2}, #{startLine1}, #{endLine1}, #{startLine2}, #{endLine2},
+        #{similarity}, #{fragment1}, #{fragment2})
+    </insert>
+
+    <update id="update" parameterType="com.example.codesimilarity.model.SimilarCodeFragment">
+        UPDATE similar_code_fragment SET file_id_1 = #{fileId1}, file_id_2 = #{fileId2},
+        start_line_1 = #{startLine1}, end_line_1 = #{endLine1}, start_line_2 = #{startLine2},
+        end_line_2 = #{endLine2}, similarity = #{similarity}, fragment_1 = #{fragment1},
+        fragment_2 = #{fragment2} WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE FROM similar_code_fragment WHERE id = #{id}
+    </delete>
+</mapper>
+

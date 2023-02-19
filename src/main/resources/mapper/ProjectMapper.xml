@@ -1,0 +1,31 @@
+<mapper namespace="com.example.codesimilarity.mapper.ProjectMapper">
+    <resultMap id="projectMap" type="com.example.codesimilarity.model.Project">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="getById" resultMap="projectMap" parameterType="java.lang.Integer">
+        SELECT * FROM project WHERE id = #{id}
+    </select>
+
+    <select id="list" resultMap="projectMap">
+        SELECT * FROM project
+    </select>
+
+    <insert id="save" parameterType="com.example.codesimilarity.model.Project">
+        INSERT INTO project(name, description, create_time, update_time)
+        VALUES(#{name}, #{description}, #{createTime}, #{updateTime})
+    </insert>
+
+    <update id="update" parameterType="com.example.codesimilarity.model.Project">
+        UPDATE project SET name = #{name}, description = #{description}, update_time = #{updateTime}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE FROM project WHERE id = #{id}
+    </delete>
+</mapper>

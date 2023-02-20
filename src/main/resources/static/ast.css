@@ -1,0 +1,43 @@
+/* ast.css */
+.ast {
+  font-family: 'Monaco', 'Consolas', 'Courier New', 'monospace';
+  white-space: pre;
+  overflow: auto;
+  padding: 1em;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+}
+
+.ast .node {
+  padding-left: 0.5em;
+  border-left: 1px solid #ccc;
+}
+
+.ast .node .type {
+  font-weight: bold;
+}
+
+.ast .node .pos {
+  font-style: italic;
+  margin-left: 0.5em;
+  color: #999;
+}
+
+.ast .node .name {
+  font-weight: bold;
+}
+
+.ast .node .value {
+  color: #999;
+}
+
+.ast .node .token {
+  background: #eef;
+  padding: 0.1em;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.ast .node .comment {
+  color: #999;
+}

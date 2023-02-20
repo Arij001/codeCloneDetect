@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>代码文件详情</title>
+    <link th:href="@{/static/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/static/css/ast.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h1>代码文件详情</h1>
+    <table class="table table-bordered">
+        <tr>
+            <td>文件名</td>
+            <td th:text="${codeFile.fileName}"></td>
+        </tr>
+        <tr>
+            <td>相似度</td>
+            <td th:text="${codeFile.similarity}"></td>
+        </tr>
+    </table>
+
+    <h2>AST树</h2>
+    <div class="ast" id="ast"></div>
+    <script src="/static/js/ast.js"></script>
+    <script>
+        var astJson = /*[[${astJson}]]*/ '{}';
+        var ast = new AST('ast');
+        ast.render(astJson);
+    </script>
+
+    <h2>相似代码片段</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>相似文件名</th>
+            <th>相似度</th>
+            <th>相似代码片段</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="fragment : ${fragmentList}">
+            <td th:text="${fragment.codeFile.fileName}"></td>
+            <td th:text="${fragment.similarity}"></td>
+            <td>
+                <pre>
+                    <code class="java" th:text="${fragment.code}"></code>
+                </pre>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="/static/js/prism.js"></script>
+</body>
+</html>

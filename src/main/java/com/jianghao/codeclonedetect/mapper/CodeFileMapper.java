@@ -13,7 +13,7 @@ import java.util.List;
  **/
 @Mapper
 public interface CodeFileMapper {
-    CodeFile getById(Integer id);
+    CodeFile getCodeFileById(Integer id);
     List<CodeFile> listByProject(Integer projectId);
     List<CodeFile> listAll();
     void save(CodeFile codeFile);

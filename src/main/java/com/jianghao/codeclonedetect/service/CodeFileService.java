@@ -18,7 +18,7 @@ public class CodeFileService {
     private CodeFileMapper codeFileMapper;
 
     public CodeFile getById(Integer id) {
-        return codeFileMapper.getById(id);
+        return codeFileMapper.getCodeFileById(id);
     }
 
     public List<CodeFile> listByProject(Integer projectId) {

@@ -8,7 +8,7 @@
         <result property="astJson" column="ast_json"/>
     </resultMap>
 
-    <select id="getById" resultMap="codeFileMap" parameterType="java.lang.Integer">
+    <select id="getCodeFileById" resultMap="codeFileMap" parameterType="java.lang.Integer">
         SELECT * FROM code_file WHERE id = #{id}
     </select>
 

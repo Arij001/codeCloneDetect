@@ -35,14 +35,8 @@ public class CodeFileController {
             throw new RuntimeException("指定的文件不存在");
         }
 
-        String astJson = codeFile.getAstJson();
-        if (astJson == null) {
-            throw new RuntimeException("指定的文件没有AST树");
-        }
-
         List<SimilarCodeFragment> fragmentList = similarCodeFragmentService.listByFile(id);
         model.addAttribute("codeFile", codeFile);
-        model.addAttribute("astJson", astJson);
         model.addAttribute("fragmentList", fragmentList);
 
         return "codeFile/view";
@@ -56,22 +50,15 @@ public class CodeFileController {
             throw new RuntimeException("指定的文件不存在");
         }
 
-        String astJson1 = codeFile1.getAstJson();
-        String astJson2 = codeFile2.getAstJson();
-        if (astJson1 == null || astJson2 == null) {
-            throw new RuntimeException("指定的文件没有AST树");
-        }
-
         List<SimilarCodeFragment> fragmentList = similarCodeFragmentService.listByFiles(id1, id2);
         model.addAttribute("codeFile1", codeFile1);
         model.addAttribute("codeFile2", codeFile2);
-        model.addAttribute("astJson1", astJson1);
-        model.addAttribute("astJson2", astJson2);
         model.addAttribute("fragmentList", fragmentList);
 
         return "codeFile/compare";
     }
 }
+
 
 
 

@@ -1,5 +1,5 @@
-<mapper namespace="com.example.codesimilarity.mapper.CodeFileMapper">
-    <resultMap id="codeFileMap" type="com.example.codesimilarity.model.CodeFile">
+<mapper namespace="com.jianghao.codeclonedetect.mapper.CodeFileMapper">
+    <resultMap id="codeFileMap" type="com.jianghao.codeclonedetect.model.CodeFile">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="path" column="path"/>
@@ -16,18 +16,18 @@
         SELECT * FROM code_file WHERE project_id = #{projectId}
     </select>
 
-    <insert id="save" parameterType="com.example.codesimilarity.model.CodeFile">
+    <insert id="save" parameterType="com.jianghao.codeclonedetect.model.CodeFile">
         INSERT INTO code_file(name, path, content, project_id, ast_json)
         VALUES(#{name}, #{path}, #{content}, #{projectId}, #{astJson})
     </insert>
 
-    <update id="update" parameterType="com.example.codesimilarity.model.CodeFile">
+    <update id="update" parameterType="com.jianghao.codeclonedetect.model.CodeFile">
         UPDATE code_file SET name = #{name}, path = #{path}, content = #{content},
         project_id = #{projectId}, ast_json = #{astJson}
         WHERE id = #{id}
     </update>
 
-    <select id="listAll" resultMap="BaseResultMap">
+    <select id="listAll" resultType="com.jianghao.codeclonedetect.model.CodeFile">
         SELECT * FROM code_file
     </select>
 

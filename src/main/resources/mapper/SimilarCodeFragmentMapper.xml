@@ -1,5 +1,5 @@
-<mapper namespace="com.example.codesimilarity.mapper.SimilarCodeFragmentMapper">
-    <resultMap id="similarCodeFragmentMap" type="com.example.codesimilarity.model.SimilarCodeFragment">
+<mapper namespace="com.jianghao.codeclonedetect.mapper.SimilarCodeFragmentMapper">
+    <resultMap id="similarCodeFragmentMap" type="com.jianghao.codeclonedetect.model.SimilarCodeFragment">
         <id property="id" column="id"/>
         <result property="fileId1" column="file_id_1"/>
         <result property="fileId2" column="file_id_2"/>
@@ -20,7 +20,7 @@
         SELECT * FROM similar_code_fragment WHERE file_id_1 = #{fileId} OR file_id_2 = #{fileId}
     </select>
 
-    <select id="listByFiles" resultType="SimilarCodeFragment">
+    <select id="listByFiles" resultType="com.jianghao.codeclonedetect.model.SimilarCodeFragment">
         SELECT
         scf.id,
         scf.file_id_1,
@@ -36,7 +36,7 @@
         OR scf.file_id_1 = #{fileId2} AND scf.file_id_2 = #{fileId1}
     </select>
 
-    <insert id="save" parameterType="com.example.codesimilarity.model.SimilarCodeFragment">
+    <insert id="save" parameterType="com.jianghao.codeclonedetect.model.SimilarCodeFragment">
         INSERT INTO similar_code_fragment(file_id_1, file_id_2, start_line_1, end_line_1, start_line_2,
         end_line_2, similarity, fragment_1, fragment_2)
         VALUES(#{fileId1}, #{fileId2}, #{startLine1}, #{endLine1}, #{startLine2}, #{endLine2},
@@ -53,7 +53,7 @@
         </foreach>
     </insert>
 
-    <update id="update" parameterType="com.example.codesimilarity.model.SimilarCodeFragment">
+    <update id="update" parameterType="com.jianghao.codeclonedetect.model.SimilarCodeFragment">
         UPDATE similar_code_fragment SET file_id_1 = #{fileId1}, file_id_2 = #{fileId2},
         start_line_1 = #{startLine1}, end_line_1 = #{endLine1}, start_line_2 = #{startLine2},
         end_line_2 = #{endLine2}, similarity = #{similarity}, fragment_1 = #{fragment1},
